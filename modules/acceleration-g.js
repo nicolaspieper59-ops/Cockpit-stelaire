@@ -38,14 +38,14 @@ export function activate(container) {
     const timestamp = pos.timestamp;
 
     const kmh = speed ? speed * 3.6 : 0;
-    el.vitesse.textContent = `🚀 Vitesse : ${kmh.toFixed(1)} km/h`;
+    el.vitesse.textContent = `🚀 Vitesse : ${kmh.toFixed(4)} km/h`;
 
     maxSpeed = Math.max(maxSpeed, kmh);
-    el.max.textContent = `📈 Max : ${maxSpeed.toFixed(1)} km/h`;
+    el.max.textContent = `📈 Max : ${maxSpeed.toFixed(4)} km/h`;
 
     totalSpeed += kmh;
     count++;
-    el.moy.textContent = `📊 Moyenne : ${(totalSpeed / count).toFixed(1)} km/h`;
+    el.moy.textContent = `📊 Moyenne : ${(totalSpeed / count).toFixed(4)} km/h`;
 
     el.alt.textContent = `🗻 Altitude : ${altitude?.toFixed(1) || '...'} m`;
     el.gps.textContent = `🎯 Précision : ±${accuracy.toFixed(1)} m`;
@@ -57,17 +57,17 @@ export function activate(container) {
       ) * 111000;
       if (dx > accuracy) {
         totalDistance += dx;
-        el.dist.textContent = `📏 Distance : ${totalDistance.toFixed(1)} m`;
+        el.dist.textContent = `📏 Distance : ${totalDistance.toFixed(4)} m`;
       }
     }
 
     lastPos = { latitude, longitude };
     lastTime = timestamp;
 
-    el.mode.textContent = accuracy > 100 || kmh === 0
+    el.mode.textContent = accuracy > 10 || kmh === 0
       ? "🕳️ Souterrain ou GPS faible"
       : "🌍 GPS actif";
-    el.mode.style.color = accuracy > 100 || kmh === 0 ? "gray" : "lime";
+    el.mode.style.color = accuracy > 10 || kmh === 0 ? "gray" : "lime";
 
     updateHeureSolaire();
     updateTempsMoyen();
