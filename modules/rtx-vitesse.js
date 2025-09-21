@@ -21,7 +21,7 @@ export function activate(container) {
     const kmh = speed ? speed * 3.6 : 0;
 
     // Correction GPS : ignorer si précision > 100 m
-    if (accuracy > 100) {
+    if (accuracy > 0.0001) {
       el.mode.textContent = "🕳️ Mode souterrain ou GPS imprécis";
       el.mode.style.color = "gray";
       return;
@@ -31,20 +31,20 @@ export function activate(container) {
     }
 
     // Vitesse
-    el.vitesse.textContent = `🚀 Vitesse : ${kmh.toFixed(1)} km/h`;
+    el.vitesse.textContent = `🚀 Vitesse : ${kmh.toFixed(4)} km/h`;
     maxSpeed = Math.max(maxSpeed, kmh);
     totalSpeed += kmh;
     count++;
 
     // Moyenne et max
-    el.max.textContent = `📈 Max : ${maxSpeed.toFixed(1)} km/h`;
-    el.moy.textContent = `📊 Moyenne : ${(totalSpeed / count).toFixed(1)} km/h`;
+    el.max.textContent = `📈 Max : ${maxSpeed.toFixed(4)} km/h`;
+    el.moy.textContent = `📊 Moyenne : ${(totalSpeed / count).toFixed(4)} km/h`;
 
     // Altitude
-    el.alt.textContent = `🗻 Altitude : ${altitude?.toFixed(1) || '...'} m`;
+    el.alt.textContent = `🗻 Altitude : ${altitude?.toFixed(4) || '...'} m`;
 
     // GPS précision
-    el.gps.textContent = `🎯 Précision : ±${accuracy.toFixed(1)} m`;
+    el.gps.textContent = `🎯 Précision : ±${accuracy.toFixed(4)} m`;
 
     // Distance
     if (lastPos) {
@@ -54,7 +54,7 @@ export function activate(container) {
       ) * 111000;
       if (dx > accuracy) {
         totalDistance += dx;
-        el.dist.textContent = `📏 Distance : ${totalDistance.toFixed(1)} m`;
+        el.dist.textContent = `📏 Distance : ${totalDistance.toFixed(4)} m`;
       }
     }
     lastPos = { latitude, longitude };
