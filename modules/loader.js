@@ -2,7 +2,6 @@ export const modules = [
   { name: "Accélération G", file: "acceleration-g" },
   { name: "Force de Newton", file: "force-newton" },
   { name: "Temps Relatif", file: "temps-relatif" },
-  { name: "Historique", file: "historique" },
   { name: "Orientation", file: "orientation" },
   { name: "Énergie", file: "energie" },
   { name: "Température", file: "temperature" },
@@ -16,7 +15,7 @@ export const modules = [
   { name: "Boussole Lunaire", file: "boussole-lunaire" },
   { name: "Boussole Sidérale", file: "boussole-sidérale" },
   { name: "Boussole Fusion", file: "boussole-fusion" },
-  { name: "Mobile Panel", file: "mobile-panel" },
-  { name: "Intro Cosmique", file: "intro-cosmique" }
+  { name: "Historique", file: "historique" },
+  { name: "Intro Cosmique", file: "intro-cosmique" },
+  { name: "Mobile Panel", file: "mobile-panel" }
 ];
-   
