@@ -47,10 +47,10 @@ export function activate(container) {
     count++;
     el.moy.textContent = `📊 Moyenne : ${(totalSpeed / count).toFixed(4)} km/h`;
 
-    el.alt.textContent = `🗻 Altitude : ${altitude?.toFixed(1) || '...'} m`;
-    el.gps.textContent = `🎯 Précision : ±${accuracy.toFixed(1)} m`;
+    el.alt.textContent = `🗻 Altitude : ${altitude?.toFixed(4) || '...'} m`;
+    el.gps.textContent = `🎯 Précision : ±${accuracy.toFixed(4)} m`;
 
-    if (lastPos && accuracy < 100) {
+    if (lastPos && accuracy < 5) {
       const dx = Math.sqrt(
         Math.pow(latitude - lastPos.latitude, 2) +
         Math.pow(longitude - lastPos.longitude, 2)
