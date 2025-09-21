@@ -21,7 +21,7 @@ export function activate(container) {
     const kmh = speed ? speed * 3.6 : 0;
 
     // Correction GPS : ignorer si précision > 100 m
-    if (accuracy > 0.0001) {
+    if (accuracy > 1) {
       el.mode.textContent = "🕳️ Mode souterrain ou GPS imprécis";
       el.mode.style.color = "gray";
       return;
