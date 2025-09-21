@@ -1,0 +1,16 @@
+{
+  "cockpit": {
+    "vitesse": {
+      "instantanee_kmh": 0,
+      "max_kmh": 0,
+      "moyenne_kmh": 0
+    },
+    "distance_m": 0,
+    "altitude_m": null,
+    "gps_precision_m": null,
+    "mode_souterrain": false,
+    "heure_solaire_locale_h": null,
+    "temps_moyen_utc": null,
+    "timestamp": null
+  }
+}
