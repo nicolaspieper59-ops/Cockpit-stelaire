@@ -4,6 +4,21 @@ body {
   font-family: 'Orbitron', sans-serif;
   color: white;
 }
+h1 {
+  text-align: center;
+  padding: 20px;
+  color: gold;
+  text-shadow: 0 0 10px orange;
+}
+button {
+  margin: 5px;
+  padding: 10px;
+  background: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 5px;
+  cursor: pointer;
+}
 .module {
   padding: 10px;
   margin: 10px;
