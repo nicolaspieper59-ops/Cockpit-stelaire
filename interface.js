@@ -1,19 +1,30 @@
-import { modules } from './modules/loader.js';
+// interface.js — Chargement automatique du module cockpit-universel
 
 window.onload = () => {
   const panel = document.getElementById('panel');
 
-  // Charger automatiquement le module "cockpit-universel"
-  const mod = modules.find(m => m.file === 'cockpit-universel');
-  if (mod) {
-    fetch(`modules/${mod.file}.html`)
-      .then(res => res.text())
-      .then(html => {
-        const container = document.createElement('div');
-        container.className = 'module';
-        container.innerHTML = html;
-        panel.appendChild(container);
-        import(`./modules/${mod.file}.js`).then(m => m.activate(container));
-      });
-  }
+  // Créer un conteneur pour le module
+  const container = document.createElement('div');
+  container.className = 'module';
+
+  // Charger le HTML du module
+  fetch('modules/cockpit-universel.html')
+    .then(res => res.text())
+    .then(html => {
+      container.innerHTML = html;
+      panel.appendChild(container);
+
+      // Activer le module JS
+      import('./modules/cockpit-universel.js')
+        .then(module => module.activate(container))
+        .catch(err => {
+          console.error("Erreur lors de l'import du module :", err);
+          container.innerHTML = "<p>⚠️ Échec du chargement du cockpit cosmique.</p>";
+        });
+    })
+    .catch(err => {
+      console.error("Erreur lors du chargement du HTML :", err);
+      container.innerHTML = "<p>⚠️ Module introuvable.</p>";
+      panel.appendChild(container);
+    });
 };
