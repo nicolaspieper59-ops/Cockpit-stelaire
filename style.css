@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at center, #000011, #000000);
+  font-family: 'Orbitron', sans-serif;
+  color: white;
+}
+.module {
+  padding: 10px;
+  margin: 10px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #444;
+  border-radius: 8px;
+}
